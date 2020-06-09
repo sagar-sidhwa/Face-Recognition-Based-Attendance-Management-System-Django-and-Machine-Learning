@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if tsid == null%}
+<div class="jumbotron jumbotron-fluid bg-dark text-white">
+    <div class="container">
+    <h2>Please Login or Register</h2>
+    <p>To access.</p>
+    </div>
+</div>
+{% endif %}
+
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+    <div class="carousel-item active">
+        {% load static %}
+        <img src="{% static 'h/1.jpg' %}" class="d-block w-100" style="width: 400px; height:500px;" alt="1">
+    </div>
+    <div class="carousel-item">
+        {% load static %}
+        <img src="{% static 'h/2.jpg' %}" class="d-block w-100" style="width: 400px; height:500px;" alt="2">
+    </div>
+    <div class="carousel-item">
+        {% load static %}
+        <img src="{% static 'h/3.jpg' %}" class="d-block w-100" style="width: 400px; height:500px;" alt="3">
+    </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<hr>
+<div class="container">
+    <div class="row align-items-center">
+    <div class="col-lg-6 order-lg-2">
+        <div class="p-5">
+            {% load static %}
+            <img class="img-fluid rounded-circle" src="{% static 'h/a.jpg' %}" alt="c">
+        </div>
+    </div>
+    <div class="col-lg-6 order-lg-1">
+        <div class="p-5">
+        <h2 class="display-4"> Face Recognition Based Attendance System is The New Thing </h2>
+        <p>Being watched and/or monitored is a legitimate fear for many people.
+            This is why facial recognition is slow to be accepted and welcomed in many industries. </p>
+        </div>
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row align-items-center">
+    <div class="col-lg-6">
+        <div class="p-5">
+            {% load static %}
+            <img class="img-fluid rounded-circle" src="{% static 'h/b.jpg' %}" alt="b">
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="p-5">
+        <h2 class="display-4">Benefits of Facial Recognition Time Tracking Solutions</h2>
+        <p>Automated time tracking system , Labor cost savings, Tighter security ,Time saving and reduced contagion , Ease of integration </p>
+        </div>
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row align-items-center">
+    <div class="col-lg-6 order-lg-2">
+        <div class="p-5">
+            {% load static %}
+            <img class="img-fluid rounded-circle" src="{% static 'h/c.jpg' %}" alt="a">
+        </div>
+    </div>
+    <div class="col-lg-6 order-lg-1">
+        <div class="p-5">
+        <h2 class="display-4">Facial recognition – fascinating and intriguing</h2>
+        <p>Few biometric technologies are sparking the imagination quite like face recognition. 
+            Equally, its arrival has prompted profound concerns and surprising reactions in 2019.            
+            But more about that later.           
+            In this dossier, you'll discover the seven face recognition facts and trends set to shape the landscape in 2020.</p>
+        </div>
+    </div>
+    </div>
+</div>
+
+<br><br><br><br><br><br><br><br>
+
+{% endblock %}

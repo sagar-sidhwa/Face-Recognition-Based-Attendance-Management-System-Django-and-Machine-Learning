@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if tsid == null%}
+<div class="jumbotron jumbotron-fluid bg-dark text-white">
+    <div class="container">
+    <h2>Please Login or Register</h2>
+    <p>To access.</p>
+    </div>
+</div>
+{% endif %}
+{% for ts in tsid %}
+<hr>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+                <div class="card">
+                    <div class="card bg-info text-white">
+                        <div class="card-body"><h2>Upload Data</h2></div>
+                    </div>
+                    <div class="card-body">
+                        <form action="{% url 'internal' %}" method='POST'>
+                            {% csrf_token %}
+                            <div class="form-group row">
+                                    <label for="classno" class="col-md-4 col-form-label text-md-right">Class No:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="classno" class="form-control" name="classno">
+                                    </div>
+                                </div>
+                            <div class="form-group row">
+                                <label for="lecture" class="col-md-4 col-form-label text-md-right">Lecture:</label>
+                                <div class="col-md-6">
+                                    <input type="text" id="lecture" class="form-control" name="lecture">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="slotno" class="col-md-4 col-form-label text-md-right">Slot no:</label>
+                                <div class="col-md-6">
+                                    <input type="text" id="slotno" class="form-control" name="slotno">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="ipadd" class="col-md-4 col-form-label text-md-right">IP Address:</label>
+                                <div class="col-md-6">
+                                    <input type="text" id="ipadd" class="form-control" name="ipadd">
+                                </div>
+                            </div>
+                            
+                            <div class="container text-center">
+                                    <div class="row">
+                                        <div class="col-md-6 py-3">
+                                            <button  type="submit" value='{{ ts.id }}' name="idetails" class="btn btn-lg btn-primary">Submit</button>
+                                        </div>
+                                    </form>
+                                        <div class="col-md-6 py-3">
+                                            <form action="{% url 'detailsvv' %}" method="POST">
+                                                {% csrf_token %}
+                                            <button type= "submit" value='{{ ts.id }}' name="idetails" class="btn btn-lg btn-danger">Cancel</button>
+                                        </form>
+                                        </div>
+                                    </div>
+                            </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+<hr>
+{% endfor %}
+{% endblock %}

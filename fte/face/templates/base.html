@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    {% load static %}
+    <link rel='stylesheet' type="text/css" href="{% static 'css/c.css' %}">
+    <title>Face Recognition Based Attendance Mangament System</title>
+</head>
+
+<style>    
+</style>
+<body>
+    <div class="bs-example">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            {% if tsid != null%}
+            {% for ts in tsid %}
+            {% if ts.users == 'teacher' %}
+
+            <form action="{% url 'homee'%}" method="POST">
+                {% csrf_token %} 
+                <button type= "submit" value='{{ ts.id }}' name="idetails" class="navbar-brand btn">FATTENDANCE</button>
+            </form>
+            {% endif %}
+
+            {% if ts.users == 'student' %}
+            <form action="{% url 'homeee'%}" method="POST">
+                {% csrf_token %} 
+                <button type= "submit" value='{{ ts.id }}' name="idetails" class="navbar-brand btn">FATTENDANCE</button>
+            </form>
+            {% endif %}
+
+            {% endfor %}
+            {% endif %}
+            {% if tsid == null%}
+            <a href="{% url 'home' %}" class="navbar-brand">FATTENDANCE</a>
+            {% endif %}
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            {% if tsid != null%}
+            {% for ts in tsid %}
+            {% if ts.users == 'teacher' %}
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ml-auto">
+                    <form action="{% url 'homee'%}" method="POST">
+                        {% csrf_token %}
+                    <button type= "submit" value='{{ ts.id }}' name="idetails" class="btn bg-dark"><a class="nav-item nav-link">Home</a></button>
+                    </form>
+                    <form action="{% url 'detailsii'%}" method="POST">
+                        {% csrf_token %}
+                    <button type="submit" value='{{ ts.id }}' name="idetails" class="btn bg-dark"><a  class="nav-item nav-link">Image Details </a></button> 
+                    </form>
+                    <form action="{% url 'detailsvv'%}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" value='{{ ts.id }}' name="idetails" class="btn bg-dark"><a class="nav-item nav-link">Video Details</a></button>
+                        </form>
+                </div>
+            </div>
+            {% endif %}
+            {% if ts.users == 'student' %}
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ml-auto">
+                    <form action="{% url 'homeee'%}" method="POST">
+                        {% csrf_token %}
+                    <button type= "submit" value='{{ ts.id }}' name="idetails" class="btn bg-dark"><a class="nav-item nav-link">Home</a></button>
+                    </form>
+                    <form action="{% url 'detailsiii'%}" method="POST">
+                        {% csrf_token %}
+                    <button type="submit" value='{{ ts.id }}' name="idetails" class="btn bg-dark"><a  class="nav-item nav-link">Image Details </a></button> 
+                    </form>
+                    <form action="{% url 'detailsvvv'%}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" value='{{ ts.id }}' name="idetails" class="btn bg-dark"><a class="nav-item nav-link">Video Details</a></button>
+                        </form>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    {% if tsid != null%}
+                    {% for ts in tsid %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}"><i class="fa fa-logout"></i> Logout</a>
+                    </li>
+                    {% if ts.users == 'teacher' %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-newspaper-o"></i>Profile </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-cyan" aria-labelledby="navbarDropdownMenuLink-4">
+                            <a class="dropdown-item" href="#">{{ ts.name }}</a>
+                            <a class="dropdown-item" href="{% url 'home' %}">Logout</a>
+                        </div>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                    {% else %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'stlogin' %}"><i class="fa fa-login"></i> Login</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'stsignup' %}"><i class="fa fa-login"></i> Register</a>
+                    </li>
+                    
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+</body>
+    {% block content %}
+
+    {% endblock  %}
+</body>
+
+<footer class="page-footer font-small blue fixed-bottom" style="background-color:#101010;">
+    <!-- Copyright -->
+        <div class="footer-copyright text-center py-2" style="color:aliceblue;">
+        Copyright © FATTENDANCE.com All Rights Reserved|Contact Us: +91 1000516525505
+        </div>
+        <!-- Copyright -->
+</footer> 
+</html>
+

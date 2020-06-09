@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if tsid == null%}
+<div class="jumbotron jumbotron-fluid bg-dark text-white">
+    <div class="container">
+    <h2>Please Login or Register</h2>
+    <p>To access.</p>
+    </div>
+</div>
+{% endif %}
+<hr>
+<div class="jumbotron jumbotron-fluid bg-dark text-white">
+    <div class="container">
+    <h1>Students Present</h1>
+    </div>
+    </div>
+<hr>
+<div class="container">
+    <table class="table table-striped">
+    <tbody>
+    
+    <tr class="bg-primary">
+    <th>Name</th>
+    <th>Date</th>
+    <th>Time</th>
+    <th>Present</th>
+    </tr>
+    {% for vdata in vid %}
+    <tr>
+    <td>{{vdata.ivname}}</td>
+    <td>{{vdata.ivd}}</td>
+    <td>{{vdata.ivt}}</td>
+    <td>{{vdata.ivp}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+    <hr>
+    <div class="container text-center">
+        <div class="row">
+            {% for ts in tsid %}
+            {% if ts.users == 'teacher' %}
+            <form action="{% url 'detailsvv' %}" method="POST">
+                {% csrf_token %}
+            <div class="col-md-3 py-3">
+                <button type="submit" value='{{ ts.id }}' name="idetails"  class="btn btn-success">Back</button>
+            </div>
+            </form>
+            {% endif %}
+            {% if ts.users == 'student' %}
+            <form action="{% url 'detailsvvv' %}" method="POST">
+                {% csrf_token %}
+            <div class="col-md-3 py-3">
+                <button type="submit" value='{{ ts.id }}' name="idetails"  class="btn btn-success">Back</button>
+            </div>
+            </form>
+            {% endif %}
+            {% endfor %}
+        </div>
+</div>
+    </div>
+<br><br><br><br><br>
+{% endblock %}
